@@ -1,0 +1,26 @@
+{% include "header.html" %}
+<body>
+  <center>
+  <div id="loading"></div>
+  <div class="form-div">
+  <div id="content">
+  		<h1>Captcha Zone</h1>
+  		<img src='{{ url_for('static', filename=src) }}'>
+  		<h2>{{captcha_req}}</h2>
+      <form method="POST">
+        <input name="captcha" placeholder="Captcha">
+        <input type="submit" onclick="loading();"> 
+      </form>
+  </div>
+  </div>
+</center>
+<script type="text/javascript">// <![CDATA[
+      function loading(){
+          console.log("here");
+          $("#loading").show();
+          $("#content").hide();
+          console.log("here2");       
+      }
+// ]]></script>
+</body>
+</html>  

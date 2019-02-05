@@ -1,0 +1,130 @@
+{% include "header.html" %}
+<body>
+  <div class="container">
+		<center><h1>SRM ERP Manager</h1></center>
+    <!-- 
+    att_lst = ['Sub_ID','Sub_Name','Max_hrs','Att_hrs','Absnt_hrs','Avg %','OD/ML %','Total %']
+    timetable = [sub1_code,sub2_code...sub8_code]
+    legend = {sub_code:sub_name...}
+
+    [current_att%, hrsLeft, canBeBunkedHrs]
+    
+    
+    att_lst = [{sub_id:name,hrs},{sub_id:name,hrs}]
+    timetale = [{mon:sub1:su2...},{mon:sub1:su2...},...]
+    legend = [{sub_code:sub_name...}]
+
+
+
+
+    {% for i in att_lst %}
+      <p>{{ i }}</p>
+    {% endfor %}
+    
+    {% for i in timetable %}
+      <p>{{ i }} </p>
+    {% endfor %}
+    
+    {% for i in legend %}
+      <p>{{ i }} {{ legend[i] }}</p>
+    {% endfor %}
+  
+    <p>{{ att_lst }} </p>
+    <br>
+    <p>{{ timetable }} </p>
+    <br>
+    <p>{{ legend }} </p>
+    <br>
+    <p>{{ max_hrs }} </p>
+    -->
+
+    <table class="table table-hover table-striped table-bordered table-responsive table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Day</th>
+          <th scope="col">1</th>
+          <th scope="col">2</th>
+          <th scope="col">3</th>
+          <th scope="col">4</th>
+          <th scope="col">5</th>
+          <th scope="col">6</th>
+          <th scope="col">7</th>
+          <th scope="col">8</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--
+        {days = ["Mon","Tue"]}
+        {% for day in days %}
+          <tr>
+            <th scope="row">{{ day }}</th>
+            {% for i in [0,1,2,3,4] %}
+              {% for sub in timetable[i] %}
+              {% if not sub=="COUN" %}
+                  <td>{{ legend[sub] }} <br> <p class="cell_footer">{{ att_lst[sub][6] }}|{{ max_hrs[sub] - att_lst[sub][1]|int}}|{{ max_hrs[sub]*0.25 - att_lst[sub][3]|int }}</p></td>
+              {% else %}
+                  <td> - </td>
+              {% endif %}
+              {% endfor %}
+            {% endfor %}
+          </tr>
+        {% endfor %}
+        -->
+        <!-- ########################### -->
+
+        <tr>
+          <th scope="row">Mon</th>
+          {% for i in timetable[0] %}
+          {% if not i=="COUN" %}
+              <td>{{ legend[i] }} <br> <p class="cell_footer">{{ att_lst[i][6] }}|{{ max_hrs[i] - att_lst[i][1]|int}}|{{ max_hrs[i]*0.25 - att_lst[i][3]|int }}</p></td>
+          {% else %}
+              <td> - </td>
+          {% endif %}
+          {% endfor %}
+        </tr>
+        <tr>
+          <th scope="row">Tue</th>
+          {% for i in timetable[1] %}
+          {% if not i=="COUN" %}
+              <td>{{ legend[i] }} <br> <p class="cell_footer">{{ att_lst[i][6] }}|{{ max_hrs[i] - att_lst[i][1]|int}}|{{ max_hrs[i]*0.25 - att_lst[i][3]|int }}</p></td>
+          {% else %}
+              <td> - </td>
+          {% endif %}
+          {% endfor %}
+        </tr>
+        <tr>
+          <th scope="row">Wed</th>
+          {% for i in timetable[2] %}
+          {% if not i=="COUN" %}
+              <td>{{ legend[i] }} <br> <p class="cell_footer">{{ att_lst[i][6] }}|{{ max_hrs[i] - att_lst[i][1]|int}}|{{ max_hrs[i]*0.25 - att_lst[i][3]|int }}</p></td>
+          {% else %}
+              <td> - </td>
+          {% endif %}
+          {% endfor %}
+        </tr>
+        <tr>
+          <th scope="row">Thur</th>
+          {% for i in timetable[3] %}
+          {% if not i=="COUN" %}
+              <td>{{ legend[i] }} <br> <p class="cell_footer">{{ att_lst[i][6] }}|{{ max_hrs[i] - att_lst[i][1]|int}}|{{ max_hrs[i]*0.25 - att_lst[i][3]|int }}</p></td>
+          {% else %}
+              <td> - </td>
+          {% endif %}
+          {% endfor %}
+        </tr>
+        <tr>
+          <th scope="row">Fri</th>
+          {% for i in timetable[4] %}
+          {% if not i=="COUN" %}
+              <td>{{ legend[i] }} <br> <p class="cell_footer">{{ att_lst[i][6] }}|{{ max_hrs[i] - att_lst[i][1]|int}}|{{ max_hrs[i]*0.25 - att_lst[i][3]|int }}</p></td>
+          {% else %}
+              <td> - </td>
+          {% endif %}
+          {% endfor %}
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+  </body>
+</html>  
