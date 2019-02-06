@@ -16,3 +16,9 @@ div#loading {
 	 text-align: center;
     vertical-align: middle;
 }
+
+.table-sm{
+    padding: .1rem !important;
+    font-size: 70% !important;
+
+}
