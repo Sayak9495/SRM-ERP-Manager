@@ -61,11 +61,14 @@ def login():
 	global uname
 	global pwd
 	captcha = request.form['captcha']
-	uname_field = driver.find_element_by_xpath('//*[@id="accountname"]')
+	uname_field = driver.find_element_by_xpath('(//*[@class="inputcls"])[1]')
+	uname_field.click()
 	uname_field.send_keys(uname)
-	pwd_field = driver.find_element_by_xpath('//*[@id="password"]')
+	pwd_field = driver.find_element_by_xpath('(//*[@class="inputcls"])[2]')
+	pwd_field.click()
 	pwd_field.send_keys(pwd)
 	captcha_field = driver.find_element_by_xpath('(//*[@class="inputcls"])[3]')
+	captcha_field.click()
 	captcha_field.send_keys(captcha)
 	driver.find_element_by_xpath('//*[@id="loginform1"]/table/tbody/tr[7]/td/input[1]').click()
 	time.sleep(3) 
